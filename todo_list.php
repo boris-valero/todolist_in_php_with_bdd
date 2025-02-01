@@ -1,73 +1,12 @@
-<?php
-// Le script se connecte à la base de données MySQL en utilisant les informations d'identification fournies
-$user = "boris";
-$password = "Jvale2lpp";
-$database = "todolist_base";
-$table = "todo_list";
-try {
-    $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
-    
-    // Si le formulaire est soumis (méthode POST) et que le champ new_task est défini
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_task'])) {
-        $new_task = $_POST['new_task'];
-        $stmt = $db->prepare("INSERT INTO $table (content) VALUES (:content)");
-        $stmt->bindParam(':content', $new_task);
-        $stmt->execute();
-    }
-    
-    // Si le formulaire est soumis (méthode POST) et que le champ delete_task est défini
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_task'])) {
-        $delete_task = $_POST['delete_task'];
-        $stmt = $db->prepare("DELETE FROM $table WHERE content = :content");
-        $stmt->bindParam(':content', $delete_task);
-        $stmt->execute();
-    }
-    
-    // Si le formulaire est soumis (méthode POST) et que le champ edit_task et new_content sont définis
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_task']) && isset($_POST['new_content'])) {
-        $edit_task = $_POST['edit_task'];
-        $new_content = $_POST['new_content'];
-        $stmt = $db->prepare("UPDATE $table SET content = :new_content WHERE content = :content");
-        $stmt->bindParam(':new_content', $new_content);
-        $stmt->bindParam(':content', $edit_task);
-        $stmt->execute();
-    }
-
-    // Le script récupère toutes les tâches de la table todo_list et les affiche dans une liste ordonnée.
-    echo "<h2>TODO</h2><ol>"; 
-    foreach ($db->query("SELECT content FROM $table") as $row) {
-        $task = htmlspecialchars($row['content']);
-        echo "<li>" . $task . "
-            <form method='post' action='' style='display:inline;'>
-                <input type='hidden' name='delete_task' value='" . $task . "'>
-                <input type='submit' value='Supprimer'>
-            </form>
-            <button onclick='showEditForm(\"" . $task . "\")'>Modifier</button>
-            <form id='edit-form-" . $task . "' method='post' action='' style='display:none;'>
-                <input type='hidden' name='edit_task' value='" . $task . "'>
-                <input type='text' name='new_content' placeholder='Modifier la tâche'>
-                <input type='submit' value='OK'>
-            </form>
-        </li>";
-    }
-    echo "</ol>";
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
-?>
-<form method="post" action="">
-    <input type="text" name="new_task" placeholder="Entrez une nouvelle tâche">
-    <input type="submit" value="Ajouter">
-</form>
-
-<script>
-function showEditForm(task)  { // La tâche spécifique à modifier, passée comme argument à la fonction.
-    var form = document.getElementById('edit-form-' + task); // Sélectionne le formulaire de modification correspondant à la tâche.
-    if (form.style.display === 'none') { // Vérifie si le formulaire est actuellement caché (display: none). Si oui, il le rend visible (display: inline). Sinon, il le cache.
-        form.style.display = 'inline';
-    } else {
-        form.style.display = 'none';
-    }
-}
-</script>
+<?php include 'todo_list_backend.php'; ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste de Tâches</title>
+</head>
+<body>
+    <!-- Le contenu HTML généré par todo_list_backend.php sera inséré ici -->
+    <script src="todo_list.js"></script>
+</body>
+</html>
