@@ -1,10 +1,14 @@
 <?php
-$user = "boris";
-$password = "Jvale2lpp";
-$database = "todolist_base";
+require 'vendor/autoload.php'; // Assurez-vous que le chemin est correct
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
+$database = $_ENV['DB_NAME'];
 $table = "todo_list";
 try {
-    $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+    $db = new PDO("mysql:host=" . $_ENV['DB_HOST'] . ";dbname=$database", $user, $password);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_task'])) {
         $new_task = $_POST['new_task'];
