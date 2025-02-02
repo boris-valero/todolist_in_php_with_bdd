@@ -61,6 +61,19 @@ try {
             display: block;
             margin-top: 10px;
         }
+        .register-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .register-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +81,7 @@ try {
         <form method="post" action="">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Mot de passe" required>
-            <input type="submit" value="S'inscrire">
+            <input type="submit" value="S'inscrire" class="register-button">
         </form>
     </div>
 </body>
