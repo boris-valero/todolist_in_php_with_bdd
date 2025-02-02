@@ -50,18 +50,18 @@ try {
     $stmt->execute();
     foreach ($stmt as $row) {
         $task = htmlspecialchars($row['content']);
-        echo "<li>" . $task . "
-            <form method='post' action='' style='display:inline;'>
-                <input type='hidden' name='delete_task' value='" . $task . "'>
-                <input type='submit' value='Supprimer'>
-            </form>
-            <button onclick='showEditForm(\"" . $task . "\")'>Modifier</button>
-            <form id='edit-form-" . $task . "' method='post' action='' style='display:none;'>
-                <input type='hidden' name='edit_task' value='" . $task . "'>
-                <input type='text' name='new_content' placeholder='Modifier la tâche'>
-                <input type='submit' value='OK'>
-            </form>
-        </li>";
+        echo "<li class='task-item'>" . $task . "
+        <form method='post' action='' style='display:inline;' class='delete-form'>
+            <input type='hidden' name='delete_task' value='" . $task . "'>
+            <input type='submit' value='Supprimer' class='delete-button'>
+        </form>
+        <button onclick='showEditForm(\"" . $task . "\")' class='edit-button'>Modifier</button>
+        <form id='edit-form-" . $task . "' method='post' action='' style='display:none;' class='edit-form'>
+            <input type='hidden' name='edit_task' value='" . $task . "'>
+            <input type='text' name='new_content' placeholder='Modifier la tâche' class='edit-input'>
+            <input type='submit' value='OK' class='edit-submit'>
+        </form>
+    </li>";
     }
     echo "</ol>";
 } catch (PDOException $e) {

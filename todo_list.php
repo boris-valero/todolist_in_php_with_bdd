@@ -40,6 +40,40 @@ include 'todo_list_backend.php';
         .add-task-button:hover {
             background-color: #0056b3;
         }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .delete-form, .edit-form {
+            margin: 0 10px;
+        }
+        .delete-button, .edit-button, .edit-submit {
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .edit-button {
+            background-color: #ffc107;
+        }
+        .edit-submit {
+            background-color: #28a745;
+        }
+        .edit-input {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
