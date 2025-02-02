@@ -13,7 +13,18 @@ include 'todo_list_backend.php';
     <title>Liste de Tâches</title>
     <style>
         .logout-button {
-            margin-top: 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .logout-button input {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
         .add-task-form {
             display: flex;
