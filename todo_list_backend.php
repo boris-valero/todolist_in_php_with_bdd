@@ -69,7 +69,7 @@ try {
     die();
 }
 ?>
-<form method="post" action="">
-    <input type="text" name="new_task" placeholder="Entrez une nouvelle tâche">
-    <input type="submit" value="Ajouter">
+<form method="post" action="" class="add-task-form">
+    <input type="text" name="new_task" placeholder="Entrez une nouvelle tâche" class="task-input">
+    <input type="submit" value="Ajouter" class="add-task-button">
 </form>

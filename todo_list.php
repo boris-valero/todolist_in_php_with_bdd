@@ -15,6 +15,31 @@ include 'todo_list_backend.php';
         .logout-button {
             margin-top: 20px;
         }
+        .add-task-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .task-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 300px;
+        }
+        .add-task-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-task-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
