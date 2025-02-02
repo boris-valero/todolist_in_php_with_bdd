@@ -18,7 +18,8 @@ try {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
-        header('Location: login.php');
+        header('Location: welcome.php');
+        exit();
     }
 } catch (PDOException $e) {
     echo "Error!: " . $e->getMessage() . "<br/>";
